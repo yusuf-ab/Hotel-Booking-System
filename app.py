@@ -273,8 +273,8 @@ def enter_details():
                 error_message = 'Password is too long'
             if form_data['password'] != form_data['confirm_password']: #Make sure passwords match
                 error_message = 'Password does not match'
-            if len(form_data['cardnumber']) != 12: #Make sure card number is 12 digits
-                error_message = 'Card  number is wrong length'
+            if len(form_data['cardnumber']) != 16: #Make sure card number is 16 digits
+                error_message = 'Card  number is should be 16 digits long'
             if not(form_data['cardnumber'].isdigit()): #Make sure card number only contains letters
                 error_message = 'Card number contains letters'
             if len(form_data['cardname']) < 3 or len(form_data['cardname']) > 30: #
