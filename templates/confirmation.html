@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Your room has been booked successfully.</h5> <!-- Title -->
+      
+      <!-- Reservation info will be inserted here -->
+
+      Reservation ID: {{revid}}
+      </br>
+      Type: {{room_type}}
+      </br>
+      Room Number: {{room_num}}
+      </br>
+      Floor: {{floor}}
+      </br>
+      Dates: {{start_date}} to {{end_date}}
+      </br>
+      Length: {{length}}
+      </br>
+      Price per day: {{price}}
+      </br>
+      Total Price: {{total_price}}
+      
+      </br>
+      </br>
+      
+      <button onclick="window.location='/'" class="btn btn-primary">Back to Homepage</button>  <!-- Button to go to homepage -->
+      </br>
+      </br>
+      You can view and manage your bookings through the bookings manager on the homepage.
+      
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3> Room Type: {{roomtype.name}}</h3> <button onclick="window.history.back()">Go Back</button>
+
+<hr>
+
+
+<img class="" style="width:100%" src="{{roomtype.main_image_url}}" >
+</br></br>
+<img class="" style="width:30%" src="{{roomtype.small_image1_url}}">&nbsp
+<img class="" style="width:30%" src="{{roomtype.small_image2_url}}" >&nbsp
+<img class="" style="width:30%" src="{{roomtype.small_image3_url}}" >
+
+<hr>
+
+<h1>Beds: {{roomtype.beds}}</h1>
+</br>
+<h1>Rate: £{{"{0:.2f}".format(roomtype.rate)}}</h1>per night
+</br>
+<hr>
+
+<p>{{roomtype.description}}</p>
+
+
+<button onclick="window.history.back()">Go Back</button>
+</div>
+{% endblock content %}

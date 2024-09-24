@@ -1,0 +1,47 @@
+{% extends "dashboard_layout.html" %}
+{% block content %}
+
+  <div class='rounded shadow-sm content-container large-content'>
+
+
+    <h3>Reservations:</h3></br>
+    
+      <table class="table table-bordered table-hover" >
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Room Number</th>
+            <th scope="col">Guest</th>
+            <th scope="col">Checked in</th>
+            <th scope="col">Checked Out</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
+            <th scope="col">Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for reservation in reservations %}
+            <tr id='reservation-{{reservation.id}}'>
+              <th>{{reservation.id}}</th>
+              <td><a href="/dashboard/rooms#room-{{reservation.id}}">{{reservation.room.number}}</a></td>
+              <td><a href="/dashboard/guests#user-{{reservation.user.id}}">{{reservation.user.name}}</a></td>
+              <td>{{reservation.checked_in}}</td>
+              <td>{{reservation.checked_out}}</td>
+              <td>{{reservation.start_date}}</td>
+              <td>{{reservation.end_date}}</td>
+              <td>
+                <form method="post">
+                  <input type="hidden" name="id" value="{{reservation.id}}">
+                  <input class="btn btn-primary" type="submit" name="action" value="Edit">&nbsp
+                  <input class="btn btn-danger" type="submit" name="action" value="Delete">
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      
+<!--       <button type="button" class="btn btn-primary">Save</button> -->
+  </div>
+
+{% endblock content %}

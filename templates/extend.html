@@ -1,0 +1,23 @@
+
+{% extends "layout.html" %}
+{% block content %}
+
+<h1>Extend Room Stay</h1>
+<hr>
+</br>
+{% if extend_length == 0 %}
+<h4>Sorry, your stay at this room cannot be extended at all.</h4>
+<button onclick="window.location='/manager'">Back to manager</button>
+{% else %}
+<form method="post">
+	<h4>Your room can be extended for {{extend_length}} days.</h4>
+	<input type="hidden" name="id" value="{{id}}">
+	</br>
+	Select number of days to extend by:</br></br>
+	<input required type="number" min="0" max={{extend_length}} step="1" name="user_extend"/>
+</br></br>
+    <input class="btn btn-primary" type="submit" name="action" value="Extend your Stay">
+</form></td>
+{% endif %}
+
+{% endblock content %}

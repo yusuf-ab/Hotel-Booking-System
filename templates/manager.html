@@ -1,0 +1,137 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+
+<h1>View your bookings</h1> <button onclick="window.location='logout';"> Logout</button>
+
+<hr>
+
+<div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Previous Bookings</h5>
+      
+      
+      <table class="table table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
+            <th scope="col">Room Number</th>
+            <th scope="col">Room Type</th>
+            <th scope="col">Floor</th>
+          </tr>
+        </thead>
+        <tbody>
+      
+           {% for reservation in reservations %}
+           {% if reservation.checked_out == True or reservation.end_date < today %}
+            <tr>
+              <td>{{reservation.start_date}}</td>
+              <td>{{reservation.end_date}}</td>
+              <th scope="row">{{reservation.room.number}}</th>
+              <td>{{reservation.room.roomtype.name}}</td>
+              <td>{{reservation.room.floor.name}}</td>
+            </tr>
+            {% endif %}
+           {% endfor %}
+        </tbody>
+      </table>
+    
+      
+    </div>
+  </div>
+  
+</br>
+<!-- Current Bookings Table -->
+<div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Current Bookings</h5>
+      
+      <table class="table table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
+            <th scope="col">Room Number</th>
+            <th scope="col">Room Type</th>
+            <th scope="col">Floor</th>
+            <th scope="col">Checked in?</th>
+            <th scope="col">Options</th>
+          </tr>
+        </thead>
+        <tbody>
+      
+          <tr>
+          {% for reservation in reservations %}
+          {% if reservation.checked_out == False and reservation.start_date <= today and reservation.end_date >= today %}
+            <tr>
+              <td>{{reservation.start_date}}</td>
+              <td>{{reservation.end_date}}</td>
+              <td>{{reservation.room.number}}</td>
+              <td>{{reservation.room.roomtype.name}}</td>
+              <td>{{reservation.room.floor.name}}</td>
+              <td>{{reservation.checked_in}}</td>
+            
+              <td><form method="post">
+                    <input type="hidden" name="id" value="{{reservation.id}}">
+                    {% if  reservation.checked_in == False %} <!-- If statement to check if the reservation is checked in -->
+                    <input class="btn btn-primary" type="submit" name="action" value="Check In">&nbsp <!-- Check in button -->
+                    {% elif  reservation.checked_in == True %} <!-- If statement to check if the reservation is checked out -->
+                    <input class="btn btn-primary" type="submit" name="action" value="Check Out">&nbs <!-- Check out button -->
+                    {% endif %}
+                    <input class="btn btn-primary" type="submit" name="action" value="Extend Stay"> <!-- Extend stay button -->
+                </form></td>
+            </tr>
+          {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+    
+    </div>
+  </div>
+  
+  </br>
+  
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Future Bookings</h5>
+      
+      <table class="table table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
+            <th scope="col">Room Number</th>
+            <th scope="col">Room Type</th>
+            <th scope="col">Floor</th>
+            <th scope="col">Options</th>
+          </tr>
+        </thead>
+        <tbody>
+      
+          {% for reservation in reservations %}
+          {% if reservation.start_date > today %}
+         <tr>
+            <td>{{reservation.start_date}}</td>
+              <td>{{reservation.end_date}}</td>
+              <td>{{reservation.room.number}}</td>
+              <td>{{reservation.room.roomtype.name}}</td>
+              <td>{{reservation.room.floor.name}}</td>
+
+            <td><form method="post">
+                    <input type="hidden" name="id" value="{{reservation.id}}">
+                    <input class="btn btn-primary" type="submit" name="action" value="Cancel">&nbsp
+                    <input class="btn btn-primary" type="submit" name="action" value="Extend Stay">
+                </form></td>
+          </tr>
+          {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+    
+    </div>
+  </div>
+
+
+{% endblock content %}

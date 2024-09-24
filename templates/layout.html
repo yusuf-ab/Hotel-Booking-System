@@ -1,0 +1,25 @@
+<head>
+	<!-- Setting Character Encoding -->
+	<meta charset="utf-8">
+	<!-- Setting up scaling -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Importing Bootstrap framework  -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<div class="container">
+
+<!-- Creating a heading -->
+<nav class="navbar navbar-expand-md navbar-dark" style="background-color: {{hotel_name[1]}};">
+<a class="navbar-brand" href="/" style="font-family: Arial; font-weight: 800; font-variant: small-caps; font-size: 20px">{{ hotel_name[0] }}</a>
+</nav>
+
+{% if no_gap %}
+{% else %}
+</br>
+{% endif %}
+
+<!-- The pages will be inserted here -->
+{% block content %}
+{% endblock %}
+</div>

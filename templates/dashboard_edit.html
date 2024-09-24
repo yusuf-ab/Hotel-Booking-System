@@ -1,0 +1,151 @@
+{% extends "dashboard_layout.html" %}
+{% block content %}
+
+  <!-- Rooms -->
+  <form method='post' class='rounded shadow-sm content-container large-content'>
+
+
+	    <input type="hidden" name="id" value="{{id}}">
+	    <h3>{{ 'Add New ' if id=='New' else 'Edit ' }}{{type}}</h3>
+
+	    </br>
+
+	    {% if type == 'Reservation'%}
+
+			Checked in:
+			<select  name="checked_in"> <!-- Check in field with a dropdown with 2 options true and false. -->
+			  <option value="0">True</option>
+			  <option value="1">False</option>
+			</select>
+
+			</br></br>
+
+			Checked out:
+			 <select  name="checked_out"> <!-- Check out field with a dropdown with 2 options true and false. -->
+			  <option value="0">True</option>
+			  <option value="1">False</option>
+			</select>
+
+			</br></br>
+
+			<input class="btn btn-primary" type="submit" name="action" value="Save"> <!-- Button to save -->
+
+		{% elif type == 'User' %}
+			Name:
+			<input class="form-control" required type="text" name="username" value="{{data.name}}">
+			</br></br>
+			Email:
+			<input class="form-control" required type="text" name="email" value="{{data.email}}">
+			</br></br>
+			Cardholder Name	:
+			<input class="form-control" required type="text" name="cardholdername" value="{{data.cardholdername}}">
+			</br></br>
+			Card Number:
+			<input class="form-control" required type="text" name="cardnumber" value="{{data.cardnumber}}">
+			</br></br>
+			CVV	:
+			<input class="form-control" required type="text" name="cvv" value="{{data.cvv}}">
+			</br></br>
+			Expiration	:
+			<input class="form-control" required type="month" name="expiration" value="{{data.expiration}}">
+			</br></br>
+
+			<input class="btn btn-primary" type="submit" name="action" value="Save">
+
+
+
+
+		{% elif type == 'Room Type'%}
+			Name:
+			<input class="form-control" required type="text" name="name" value="{{'' if data==None else data.name}}">
+			</br></br>
+
+			Beds:
+			<input class="form-control" required type="number" min="1" step="1" name="beds" value="{{'' if data==None else data.beds}}" />
+			</br></br>
+
+			Rate:
+			<input class="form-control" required type="number" min="0.00" step="0.01" name="rate" value="{{'' if data==None else data.rate}}" />
+			</br></br>
+
+			Main Image:
+			<input class="form-control" type="url" name="main_image_url" value="{{'' if data==None else data.main_image_url}}">
+			</br></br>
+
+			Small Image 1:
+			<input class="form-control" type="url" name="small_image1_url" value="{{'' if data==None else data.small_image1_url}}">
+			</br></br>
+
+			Small Image 2:
+			<input class="form-control" type="url" name="small_image1_url" value="{{'' if data==None else data.small_image1_url}}">
+			</br></br>
+
+			Small Image 3:
+			<input class="form-control" type="url" name="small_image1_url" value="{{'' if data==None else data.small_image1_url}}">
+			</br></br>
+
+			Description
+			<textarea class="form-control" name="description" rows="10" cols="30">{{data.description}}</textarea>
+			</br></br>
+
+		<input class="btn btn-primary" type="submit" name="action" value="Save Room Type">
+		{% elif type == 'Floor'%}
+
+			Name
+			<input class="form-control" type="text" name="name">
+			</br></br>
+
+		<input class="btn btn-primary" type="submit" name="action" value="Save Floor">
+
+		{% elif type == 'Room'%}
+
+		Number:
+		<input class="form-control" required type="text" name="number" value="{{number}}">
+		</br></br>
+		Room Type:
+		<select  name="roomtype">
+		{% for roomtype in roomtypes %}
+		  <option value="{{roomtype.id}}">{{roomtype.name}}</option>
+		 {% endfor %}
+		</select>
+		</br></br>
+
+		Floor:
+		<select  name="floor">
+		{% for floor in floors %}
+		  <option value="{{floor.id}}">{{floor.name}}</option>
+		 {% endfor %}
+		</select>
+		</br></br>
+
+		<input class="btn btn-primary" type="submit" name="action" value="Save">
+
+		{% elif type == 'Settings'%}
+		
+		Admin Email:
+		<input class="form-control" type="text" name="admin_email" value="{{admin_email}}">
+		</br></br>
+
+		Admin Password:
+		<input class="form-control" type="password" name="admin_password" value="{{admin_password}}">
+		</br></br>
+
+		Hotel Name:
+		<input class="form-control" type="text" name="hotel_name" value="{{hotel_name}}">
+		</br></br>
+
+		Hotel Color:
+		<input class="form-control" type="color" name="hotel_color" value="{{hotel_color}}">
+		</br></br>
+
+		Hotel Homepage Cover Image:
+		<input class="form-control" type="cover_url" name="cover_url" value="{{cover_url}}">
+		</br></br>
+
+		<input class="btn btn-primary" type="submit" name="action" value="Save">
+
+	    {% endif %}
+
+  </form>
+
+{% endblock content %}

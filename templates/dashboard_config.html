@@ -1,0 +1,84 @@
+{% extends "dashboard_layout.html" %}
+{% block content %}
+
+  <div class='rounded shadow-sm content-container large-content'>
+
+    <h3>Room Types:</h3></br>
+    
+      <table class="table table-bordered table-hover" >
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Beds</th>
+            <th scope="col">Rate</th>
+            <th scope="col">Num of Rooms</th>
+            <th scope="col">Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for roomtype in roomtypes %}
+            <tr id="roomtype-{{roomtype.id}}">
+              <th>{{roomtype.id}}</th>
+              <td>{{roomtype.name}}</td>
+              <td>{{roomtype.beds}}</td>
+              <td>&pound;{{roomtype.rate|round(2, 'floor')}}</td>
+              <td>{{roomtype.rooms|length}}</td>
+              <td><form method="post">
+                  <input type="hidden" name="id" value="{{roomtype.id}}">
+                  <input class="btn btn-primary" type="submit" name="action" value="Edit Room Type">&nbsp
+                  <input class="btn btn-danger {{ 'disabled' if roomtype.rooms|length > 0 }}" type="submit" name="action" value="Delete Room Type">
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <form method="post">
+      <input type="submit" name="action" value="Add Room Type">
+    </form>
+
+      <i>Floors can only be deleted it they aren't set to any rooms</i>
+  </div>
+
+  <!-- Floors -->
+  <div class='rounded shadow-sm content-container large-content'>
+
+    <h3>Floors:</h3></br>
+    
+      <table class="table table-bordered table-hover" >
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Num of Rooms</th>
+            <th scope="col">Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for floor in floors %}
+            <tr id="floor-{{floor.id}}">
+              <th>{{floor.id}}</th>
+              <td>{{floor.name}}</td>
+              <td>{{floor.rooms|length}}</td>
+            <td><form method="post">
+                  <input type="hidden" name="id" value="{{floor.id}}">
+                  <input class="btn btn-primary" type="submit" name="action" value="Edit Floor">&nbsp
+                  <input class="btn btn-danger {{ 'disabled' if floor.rooms|length > 0 }}" type="submit" name="action" value="Delete Floor">
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <form method="post">
+      <input type="submit" name="action" value="Add Floor">
+    </form>
+      
+
+      <i>Room Types can only be deleted it they aren't set to any rooms</i>
+  </div>
+
+{% endblock content %}

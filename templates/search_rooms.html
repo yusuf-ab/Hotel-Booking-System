@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container-fluid">
+
+
+<h3> Rooms Available from {{ start_date }} to {{ end_date }}</span></h3> <!--Title Showing the dates-->
+
+<h5>Types:</h5>
+
+<hr>
+
+{% for roomtype_id in results %}
+
+    <div class="card mt-3 mb-2"> <!--Box for one rooom type-->
+        <div class="card-horizontal"> <!-- Class which makes it display horizonally-->
+
+            <img class="" src="{{roomtype_data[roomtype_id].main_image_url}}" > <!-- Image of the room, right now a placeholder-->
+
+            <div class="card-body">
+                <h4 class="card-title">{{roomtype_data[roomtype_id].name}}</h4><!-- Displays room name -->
+                <h6 class="text-muted">{{results[roomtype_id]|length}} rooms available</h6><!-- Displays number of rooms available for that type -->
+                <p class="card-text">{{roomtype_data[roomtype_id].description}}</p><!-- Displays the room description -->
+            </div>
+
+            <div class="card-body float-right mr-2" ><!-- Section is display prices -->
+                <span><span class="h3">£{{"{0:.2f}".format(roomtype_data[roomtype_id].rate)}}</span> <i>per day</i></span> <!-- Display rate per day -->
+                </br>
+                </br>
+                <span><span class="h3">£{{"{0:.2f}".format(roomtype_data[roomtype_id].rate * length)}}</span> <i>total for {{length}} day(s)</i></span> <!-- calculate total price by multiplying by length of days -->
+            </div>
+            
+            <div class="card-body" >
+                <button onclick="window.location='select_room'+window.location.search+'&roomtype={{roomtype_id}}';" type="button" class="btn btn-primary float-right mr-2">Book</button> <!-- Book button placed on right-->
+                <br>
+                <br>
+                <button onclick="window.location='room_info'+window.location.search+'&roomtype={{roomtype_id}}';" type="button" class="btn btn-primary float-right mr-2">Info</button><!-- Info button placed on right-->
+            </div>
+        </div>
+    </div>
+
+{% endfor %}
+
+
+</div>
+
+<style>
+ .card-horizontal { /*Styles to make the div containing the roomtype info to put the images horizontally next to the description*/
+    display: flex;
+    flex: 1 1 auto;
+}
+
+
+img{ /*Sets size of the image*/
+ width:150px
+}
+
+
+</style>
+
+
+{% endblock content %}

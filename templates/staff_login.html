@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="card mx-auto mt-5" style="width: 350px" method="post">
+  <form class="card-body" method="post"> <!-- Create a form  -->
+    <h2 class="card-title">Staff Login</h2> <!--  Display's the title of Staff Login -->
+
+    
+      <h6 class="card-subtitle mb-2 mt-2 text-muted">Email:</h6> <!-- Email Field -->
+      <input class="form-control" id="email" name="email" required type="text" value="">
+      <h6 class="card-subtitle mb-2 mt-2 text-muted">Password:</h6> <!-- Password Field -->
+      <input class="form-control" id="password" name="password" required type="password" value="">
+    
+
+    <input class="btn btn-primary mt-3" id="submit" name="submit" type="submit" value="Submit"> <!-- Display Submit button -->
+
+    {% if error %} <!-- Check for errors -->
+
+    </br>
+    </br>
+          <div class="alert alert-danger" role="alert"> <!-- HTML code to display the error -->
+              {{error}} <!-- Display errors if there are any -->
+          </div>
+
+    {% endif %}
+  </form>
+  </div>
+
+</div>
+{% endblock content %}
+

@@ -1,0 +1,47 @@
+{% extends "dashboard_layout.html" %}
+{% block content %}
+
+  <!-- Rooms -->
+  <div class='rounded shadow-sm content-container large-content'>
+
+    <h3>Rooms:</h3></br>
+    
+      <table class="table table-bordered table-hover" >
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Floor</th>
+            <th scope="col">Room Type</th>
+            <th scope="col">Num of Reservations</th>
+            <th scope="col">Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for room in rooms %}
+            <tr id='room-{{room.id}}'>
+              <th>{{room.id}}</th>
+              <td>{{room.number}}</td>
+              <td><a href="/dashboard/rooms_config#floor-{{room.floor.id}}">{{room.floor.name}}</a></td>
+              <td><a href="/dashboard/rooms_config#roomtype-{{room.roomtype.id}}">{{room.roomtype.name}}</a></td>
+              <td>{{room.reservations|length}}</td>
+              <td><form method="post">
+                  <input type="hidden" name="id" value="{{room.id}}">
+                  <input class="btn btn-primary" type="submit" name="action" value="Edit">&nbsp
+                  <input class="btn btn-danger {{ 'disabled' if room.reservations|length > 0 }}" type="submit" name="action" value="Delete">
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <form method="post">
+      <input type="submit" name="action" value="Add Room">
+    </form>
+
+      <i>Rooms can only be deleted if they have no reservations</i>
+      
+  </div>
+
+{% endblock content %}

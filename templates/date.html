@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<div class="container-fluid">
+  <h2>Enter date:</h2>
+  </br
+</div>
+  <div class="container-fluid input-group">
+    <form action="/search_rooms"><!-- This is redirect the input to the search page -->
+		Check in:
+		<input type="date" name="start" class="form-control"><!-- This is the first date input box -->
+		<br />
+		Check out:
+		<input type="date" name="end" class="form-control"><!-- This is the second date input box -->
+
+		<br />
+
+		<button type="submit" class="btn btn-primary">Search</button><!-- Button to start the search -->
+
+        {% if error %} <!-- Check if any errors were passed -->
+        <br />
+        <br />
+
+        <div class="alert alert-danger" role="alert"> <!-- HTML code to display the error -->
+  			{{ error }} Please enter different dates. 
+		</div>
+
+		{% endif %}
+
+        <small class="form-text text-muted">You can book up to 1 year in advance.</small>
+
+    </form>
+  </div>
+
+{% endblock content %}

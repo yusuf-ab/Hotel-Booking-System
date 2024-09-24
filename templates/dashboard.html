@@ -1,0 +1,88 @@
+{% extends "dashboard_layout.html" %}
+{% block content %}
+    
+      <div class='rounded shadow-sm content-container'>
+        <div class="row">
+            <div class="col-xs-6">
+                <i class="material-icons mr-1">attach_money</i>
+            </div>
+            <div class="col-xs-6 mr-3">
+                <h4>Total Earnings</h4>
+                <h1>&pound;{{total_earnings}}</h1>
+            </div>
+        </div>
+        
+      </div>
+        
+      <div class='rounded shadow-sm content-container'>
+        <div class="row">
+            <div class="col-xs-6">
+                <i class="material-icons mr-3">supervisor_account</i>
+            </div>
+            <div class="col-xs-6 mr-3">
+                <h4>Guests booked in</h4>
+                <h1>{{current_guests}}</h1>
+            </div>
+        </div>
+      </div>
+
+      <div class='rounded shadow-sm content-container'>
+        <div class="row">
+            <div class="col-xs-6">
+                <i class="material-icons mr-3">supervisor_account</i>
+            </div>
+            <div class="col-xs-6 mr-3">
+                <h4>Total Guests</h4>
+                <h1>{{total_guests}}</h1>
+            </div>
+        </div>
+      </div>
+      
+      <div class='rounded shadow-sm content-container'>
+        <div class="row">
+            <div class="col-xs-6">
+                <i class="material-icons mr-3">calendar_today</i>
+            </div>
+            <div class="col-xs-6 mr-3">
+                <h4>Future Reservations</h4>
+                <h1>{{future_reservations}}</h1>
+            </div>
+        </div>
+      </div>
+
+      <div class='rounded shadow-sm content-container'>
+        <div class="row">
+            <div class="col-xs-6">
+                <i class="material-icons mr-3">calendar_today</i>
+            </div>
+            <div class="col-xs-6 mr-3">
+                <h4>Total Reservations</h4>
+                <h1>{{total_reservations}}</h1>
+            </div>
+        </div>
+      </div>
+
+      <div class='rounded shadow-sm content-container'>
+        <div class="row">
+            <div class="col-xs-6">
+                <i class="material-icons mr-3">calendar_today</i>
+            </div>
+            <div class="col-xs-6 mr-3">
+                <h4>Rooms Used</h4>
+                <h1>{{rooms_used}}</h1>
+            </div>
+        </div>
+      </div>
+
+      <div class='rounded shadow-sm content-container'>
+        <div class="row">
+            <div class="col-xs-6">
+                <i class="material-icons mr-3">calendar_today</i>
+            </div>
+            <div class="col-xs-6 mr-3">
+                <h4>Total Rooms</h4>
+                <h1>{{total_rooms}}</h1>
+            </div>
+        </div>
+      </div>
+{% endblock content %}

@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% block content %}
+
+	<img src="{{cover_image}}" class="img-fluid"> <!-- Display a cover image -->
+
+
+	<div class="pb-2 mb-1 mt-5 border-bottom">
+	<h3>Our Rooms:</h3> <!-- Title -->
+	</div>
+
+	 <!-- Container to display images of the rooms -->
+	<div class="row flex-row flex-nowrap room-container p-4" style="overflow-x: scroll;">
+		{% for roomtype in roomtypes%}
+		<div class="">
+            <div class="room-card card ml-2" style="width: 15rem;">
+			  <img src="{{roomtype.main_image_url}}" class="card-img-top" alt="...">
+			  <div class="card-body">
+			  	<a><h5 class="card-title">{{roomtype.name}}</h5></a> <!-- Room Title -->
+			    <p class="card-text">{{roomtype.description}}</p> <!-- Room Description -->
+			  </div>
+			</div>
+		</div>
+		{% endfor %}
+    </div>
+
+	</br>
+     <a class="btn btn-primary" href="/book" role="button"><h2>Book a room</h2></a> <!-- Button to take guests to the first booking page -->
+
+
+	<div class="pb-2 mb-1 mt-5 border-bottom">
+	<h3>View your and manage your reservations:</h3> <!-- Title for the section to login to resevation manager-->
+	</div>
+
+	<div class="card text-white bg-primary m-4" style="width:100%; background-color: #1B4079;">
+	  <div class="card-header">Reservation Manager:</div> <!-- Another Title -->
+		{% if logged_in==false %} <!-- If user is not logged in, a form to enter login details are displayed -->
+
+	
+	  <form method="post" class="card-body">
+	  	<h4 class="card-title">Login</h4> <!-- Login area -->
+			<h6 class="mb-2 mt-2">Email:</h6>
+		    <input class="form-control" id="email" name="email" required type="email" value=""><!-- Email field -->
+		    <h6 class="mb-2 mt-2">Password:</h6>
+		    <input class="form-control" id="password" name="password" required type="password" value=""><!-- Password Field -->
+		   
+		    <input class="btn btn-light mt-3" id="submit" name="submit" type="submit" value="Submit"><!-- button to login -->
+
+		    {% if error %} <!-- Display any login errors here -->
+			        </br>
+			        </br>
+			        <div class="alert alert-danger" role="alert"> <!-- HTML code to display the error -->
+			        {{error}}
+			    </div>
+			 {% endif %}
+	  </form>
+	  
+
+	{% else %}  <!-- if user is already logged in, this will be displayed instead-->
+	<div class="card-body">
+		<h4 class="card-title">You are already logged in</h4>
+		<a class="btn btn-light mt-3" href="/manager" role="button">View your bookings</a> 
+	</div>
+	{% endif %}
+	</div>
+
+
+
+	<div class="pb-2 mb-1 mt-5 border-top">
+	<a href="/staff_login">Staff Login</a> <!-- Button at bottom of page to bring staff to staff dashboard -->
+	</div>
+
+	<style type="text/css">/*Additional styling*/
+	.room-card {
+		height: 100%;
+	}
+
+	</style>
+{% endblock content %}

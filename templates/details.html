@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<h1>Enter your details:</h1> <!-- Title of the page -->
+
+<hr>
+
+</br>
+</br>
+
+<div class="horizontal">
+    
+    <div>
+        <div class="card">
+                <form class="card-body" method="post"><!--  Login Form -->
+                      <h2 class="card-title">Login</h2><!--  Form Title -->
+                      
+                        <h6 class="card-subtitle mb-2 mt-2 text-muted">Email:</h6><!-- Username Label and field  -->
+                        <input class="form-control" name="email" required type="text" value="">
+                        <h6 class="card-subtitle mb-2 mt-2 text-muted">Password:</h6><!-- password Label and field  -->
+                        <input class="form-control" name="password" required type="password" value="">
+                        <input type="hidden" name="detail_type" value="login">
+                        <input type="hidden" name="roomnumber" value="{{roomid}}"> <!-- other reservation info from query string, not shown to user  -->
+                        <input type="hidden" name="startdate" value= "{{startdate}}">
+                        <input type="hidden" name="enddate" value= "{{enddate}}">
+                      
+                  
+                      <input class="btn btn-primary mt-3" id="submit" name="submit" type="submit" value="Submit"><!-- Button to submit the form  -->
+                      
+                      <div class='mt-2'>
+                      </div>
+                </form>
+          </div>
+    </div>
+    
+    
+    <h1 class="m-5">OR</h1>
+
+    <div>
+          <div class="card">
+                  <form class="card-body" method="post"> <!-- Enter Details Form -->
+                        <h2 class="card-title">Create an Account</h2>
+                          <div class="horizontal">
+                          
+                              <div>
+                                  <h6 class="card-subtitle mb-2 mt-2 text-muted">Name:</h6> <!-- Name Label and field  -->
+                                  <input class="form-control" name="username" required type="text" value="">
+                                  <h6 class="card-subtitle mb-2 mt-2 text-muted">Email:</h6><!-- Email Label and field  -->
+                                  <input class="form-control" name="email" required type="email" value="">
+                                  <h6 class="card-subtitle mb-2 mt-2 text-muted">Confirm Email:</h6><!-- Confirm email Label and field  -->
+                                  <input class="form-control" name="confirm_email" required type="email" value="">
+                                  <h6 class="card-subtitle mb-2 mt-2 text-muted">Password:</h6><!-- Password Label and field  -->
+                                  <input class="form-control" name="password" required type="password" value="">
+                                  <h6 class="card-subtitle mb-2 mt-2 text-muted">Confirm Password:</h6><!-- Confirm password Label and field  -->
+                                  <input class="form-control" name="confirm_password" required type="password" value="">
+                                  
+                                  <input class="btn btn-primary mt-3" id="submit" name="submit" type="submit" value="Submit"><!-- Button to submit the form  -->
+                              </div>
+                              
+                              &nbsp&nbsp&nbsp
+                              
+                              <div><!-- Section for the user to enter card details  -->
+                                  <h6 class="card-subtitle mb-2 mt-2 text-muted">Card Details:</h6>
+                                  
+                                  <input class="form-control mb-2" name="cardnumber" placeholder="Card Number" required type="text" value=""> <!-- Field to enter card number -->
+                                  <input class="form-control mb-2" name="cardname" placeholder="Cardholder Name" required type="text" value=""><!--  Field to enter cardholder name -->
+                                  <h6 class="card-subtitle mb-2 mt-2 text-muted">Card Expiration:</h6>
+                                  <input class="form-control mb-2" name="cardexpiration" placeholder="Expiration" required type="month" value=""> <!-- Field to enter cardholder password -->
+                                  <input class="form-control mb-2" name="cardcvv" size="3" placeholder="CVV" required type="text" value=""> <!-- Field to enter card cvv -->
+                              </div>
+                              
+                              <input type="hidden" name="detail_type" value="register">
+                              <input type="hidden" name="roomnumber" value="{{roomid}}">
+                              <input type="hidden" name="startdate" value= "{{startdate}}">
+                              <input type="hidden" name="enddate" value= "{{enddate}}"><!-- other reservation info from query string, not shown to userr  -->
+                            
+                          </div>
+                        
+                  </form>
+        </div>
+        
+    </div>
+    
+  </div>
+  
+  
+{% if error %} <!-- Check if any errors were passed -->
+        <br />
+        <div class="alert alert-danger" role="alert"> <!-- HTML code to display the error -->
+        {{ error }}
+    </div>
+
+ {% endif %}
+
+  </br>
+
+
+</div>
+
+<style> /*styling to make the forms horzontal to each other*/
+ .horizontal {
+    display: flex;
+}
+
+</style>
+
+
+{% endblock content %}

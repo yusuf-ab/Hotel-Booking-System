@@ -1,0 +1,47 @@
+{% extends "dashboard_layout.html" %}
+{% block content %}
+
+  <!-- Rooms -->
+  <div class='rounded shadow-sm content-container large-content'>
+
+    <h3>All Users:</h3></br>
+    
+      <table class="table table-bordered table-hover" >
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Cardholder Name</th>
+            <th scope="col">Card Number</th>
+            <th scope="col">CVV</th>
+            <th scope="col">Expiration</th>
+            <th scope="col">Num of reservations</th>
+            <th scope="col">Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in users %}
+            <tr id='user-{{user.id}}'>
+              <th>{{user.id}}</td>
+              <td>{{user.name}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.cardholdername}}</td>
+              <td>{{user.cardnumber}}</td>
+              <td>{{user.cvv}}</td>
+              <td>{{user.expiration}}</td>
+              <td>{{user.reservations|length}}</td>
+              <td><form method="post">
+                  <input type="hidden" name="id" value="{{user.id}}">
+                  <input class="btn btn-primary" type="submit" name="action" value="Edit">&nbsp
+                  <input class="btn btn-danger {{ 'disabled' if user.reservations|length > 0 }}" type="submit" name="action" value="Delete">
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      
+  </div>
+
+{% endblock content %}
