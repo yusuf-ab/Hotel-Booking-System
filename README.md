@@ -46,12 +46,31 @@ This is a Flask-based hotel booking system that provides a user-friendly platfor
 
 ## Setup
 
+Here are the instructions on setting up your hotel and guest login for the Reservation Manager, incorporating these points into the README.md:
+
+## Setup
+
 1. **Database Initialization:** 
    - Run the application (`flask run`) to automatically create the SQLite database.
 
 2. **Initial Settings:**
    - The application is pre-populated with default settings.
-   - Access the staff dashboard (usually at `/staff_login` after running the app) and log in with the default credentials to customize these settings.
+   - Access the staff dashboard (uat `/staff_login` after running the app) and log in with the default credentials (**username = "admin", password = "admin"**) to customize these settings.
+
+3. **Configuring Your Hotel:**
+
+   - **Log in to the Staff Dashboard:**  Navigate to `/staff_login`
+   - 
+   - **Create Room Types:** Go to the "Room Configuration" section of the dashboard.  Add descriptions, set rates, and upload images for each room type (e.g., "Single Room", "Double Room", "Suite").
+
+   - **Manage Floors:**  Define the floors in your hotel (e.g., "1st Floor", "2nd Floor").
+
+   - **Add Individual Rooms:**  In the "Rooms" section, assign each room a number, select its floor, and link it to a room type.
+
+4. **Guest Access to Reservation Manager:**
+
+   - **Guests can access the Reservation Manager from the homepage.** They will need to create an account first by going through the booking process. Once an account is created, they can use their email and password to log in and manage their bookings.
+
 
 ## Running the Application
 
