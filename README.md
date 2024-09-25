@@ -60,7 +60,7 @@ Here are the instructions on setting up your hotel and guest login for the Reser
 3. **Configuring Your Hotel:**
 
    - **Log in to the Staff Dashboard:**  Navigate to `/staff_login`
-   - 
+     
    - **Create Room Types:** Go to the "Room Configuration" section of the dashboard.  Add descriptions, set rates, and upload images for each room type (e.g., "Single Room", "Double Room", "Suite").
 
    - **Manage Floors:**  Define the floors in your hotel (e.g., "1st Floor", "2nd Floor").
@@ -71,7 +71,6 @@ Here are the instructions on setting up your hotel and guest login for the Reser
 
    - **Guests can access the Reservation Manager from the homepage.** They will need to create an account first by going through the booking process. Once an account is created, they can use their email and password to log in and manage their bookings.
 
-
 ## Running the Application
 
 1. **Start the Flask development server:**
@@ -79,7 +78,6 @@ Here are the instructions on setting up your hotel and guest login for the Reser
    flask run
    ```
 2. **Access the application:** Open a web browser and navigate to `http://127.0.0.1:5000/` (or the URL specified in the terminal).
-3. **Default Staff Login:** The default username is **"admin"** and the default password is **"admin"**.
 
 ## Technologies Used
 
