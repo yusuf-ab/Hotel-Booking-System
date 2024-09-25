@@ -89,7 +89,6 @@ Here are the instructions on setting up your hotel and guest login for the Reser
 - **HTML:** For structuring web pages
 - **CSS:** For styling web pages
 - **Bootstrap:** CSS framework for responsive design and mobile-friendliness
-- **JavaScript:** For client-side interactions and dynamic page updates
 - **Python:** Server-side programming language
 
 ## Project Structure
