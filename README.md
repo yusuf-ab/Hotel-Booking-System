@@ -92,13 +92,13 @@ Here are the instructions on setting up your hotel and guest login for the Reser
 
 ## Technologies Used
 
-- **Flask:** Web framework for building web applications
-- **SQLAlchemy:**  Object-relational mapper (ORM) for interacting with the database
+- **Python:** Server-side programming language
+- **Flask:**Python Web framework for building web applications
 - **SQLite:**  Database for storing application data
+- **SQLAlchemy:**  Object-relational mapper (ORM) for interacting with the database
 - **HTML:** For structuring web pages
 - **CSS:** For styling web pages
 - **Bootstrap:** CSS framework for responsive design and mobile-friendliness
-- **Python:** Server-side programming language
 
 ## Project Structure
 
