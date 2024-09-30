@@ -1,5 +1,9 @@
 # Hotel Booking System
 
+## Description
+
+This is a Flask-based hotel booking system that provides a user-friendly platform for managing hotel bookings. It allows guests to browse available rooms, make reservations, and manage their bookings, while providing hotel staff with a comprehensive dashboard for overseeing all aspects of hotel operations. 
+
 ## Images
 
 <p align="center">
@@ -10,10 +14,6 @@
   <img src="images/image4.png" width="200" />
   <img src="images/image5.png" width="200" />
 </p>
-
-## Description
-
-This is a Flask-based hotel booking system that provides a user-friendly platform for managing hotel bookings. It allows guests to browse available rooms, make reservations, and manage their bookings, while providing hotel staff with a comprehensive dashboard for overseeing all aspects of hotel operations. 
 
 ## Features
 
